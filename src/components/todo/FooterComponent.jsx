@@ -1,9 +1,9 @@
 export default function FooterComponent() {
     return (
         <footer className='footer'>
-            <div className="container">
+            {/* <div className="container">
                 Stay organized and focused with our todo app. Your productivity, our priority.
-            </div>
+            </div> */}
         </footer>
 
     )
