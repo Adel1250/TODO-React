@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import './TodoApp.css';
-import { BrowserRouter, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 
 export default function TodoApp() {
     return (
         <div className='TodoApp'>
+            <HeaderComponent />
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<LoginComponent />}></Route>
-                    <Route path='/login' element={<LoginComponent />}></Route>
-                    <Route path='/welcome/:username' element={<WelcomeComponent />}></Route>
-                    <Route path='/*' element={<ErrorComponent />}></Route>
+                    <Route path='/' element={<LoginComponent />} />
+                    <Route path='/login' element={<LoginComponent />} />
+                    <Route path='/welcome/:username' element={<WelcomeComponent />} />
+                    <Route path='/todos' element={<TodoListComponent />} />
+                    <Route path='/logout' element={<LogoutComponent />} />
+                    <Route path='/*' element={<ErrorComponent />} />
                 </Routes>
             </BrowserRouter>
+            <FooterComponent />
         </div>
     )
 }
@@ -72,6 +76,9 @@ function WelcomeComponent() {
     return (
         <div className="Welcome">
             <h1>Welcome {username}</h1>
+            <div>
+                Manage your todos. <Link to='/todos'>Here!</Link>
+            </div>
         </div>
     )
 }
@@ -81,6 +88,81 @@ function ErrorComponent() {
         <div className="Error">
             <h1>
                 Apologies for 404. Reach out to our team.
+            </h1>
+        </div>
+    )
+}
+
+function TodoListComponent() {
+    const targetDate = new Date();
+    const todos = [
+        {
+            id: 1,
+            description: "Learn Java",
+            done: false,
+            targetDate: targetDate
+        },
+        {
+            id: 2,
+            description: "Learn Spring",
+            done: false,
+            targetDate: targetDate
+        }
+    ]
+    return (
+        <div className="Todo">
+            <h1>
+                Things you want to do!
+            </h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Description</td>
+                        <td>Is done?</td>
+                        <td>Target date</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        todos.map(
+                            todo => (
+                                <tr key={todo.id}>
+                                    <td>{todo.id}</td>
+                                    <td>{todo.description}</td>
+                                    <td>{todo.done.toString()}</td>
+                                    <td>{todo.targetDate.toDateString()}</td>
+                                </tr>
+                            )
+                        )
+                    }
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+function HeaderComponent() {
+    return (
+        <div className="header">
+            Header <hr />
+        </div>
+    )
+}
+
+function FooterComponent() {
+    return (
+        <div className="footer">
+            <hr /> Footer
+        </div>
+    )
+}
+
+function LogoutComponent() {
+    return (
+        <div className="logout">
+            <h1>
+                Thanks for using our App. Come back soon!
             </h1>
         </div>
     )
