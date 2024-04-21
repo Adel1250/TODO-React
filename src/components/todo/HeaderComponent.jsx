@@ -9,11 +9,11 @@ export default function HeaderComponent() {
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
-                        <Link className="navbar-brand ms-2 fs-2 fw-bold text-black" to="/welcome/Guest">Todo App</Link>
+                        <Link className="navbar-brand ms-2 fs-2 fw-bold text-black" to={`/welcome/${authContext.username}`}>Todo App</Link>
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
                                 <li className="nav-item fs-5">
-                                    {isAuthenticated && <Link className="nav-link" to="/welcome/Guest">Home</Link>}
+                                    {isAuthenticated && <Link className="nav-link" to={`/welcome/${authContext.username}`}>Home</Link>}
                                 </li>
                                 <li className="nav-item fs-5">
                                     {isAuthenticated && <Link className="nav-link" to="/todos">Todos</Link>}
