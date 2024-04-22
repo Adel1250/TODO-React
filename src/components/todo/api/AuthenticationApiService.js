@@ -1,6 +1,6 @@
 import { apiClient } from "./ApiClient";
 
-export const basicAuthApi = (token) => apiClient.get("/users/basic-auth", {
+export const basicAuthApi = (token) => apiClient.get("/basic-auth", {
     headers: {
         Authorization: token
     }

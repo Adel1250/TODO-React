@@ -46,7 +46,6 @@ export default function TodoListComponent() {
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Is done?</th>
                         <th>Target date</th>
                         <th>Delete</th>
                         <th>Update</th>
@@ -58,7 +57,6 @@ export default function TodoListComponent() {
                             todo => (
                                 <tr key={todo.id}>
                                     <td>{todo.description}</td>
-                                    <td>{todo.done.toString()}</td>
                                     <td>{todo.targetDate}</td>
                                     <td><button className="btn btn-warning" onClick={() => deleteTodo(todo.id)}>Delete</button></td>
                                     <td><button className="btn btn-success" onClick={() => updateTodo(todo.id)}>Update</button></td>

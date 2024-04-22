@@ -31,8 +31,7 @@ export default function TodoComponent() {
     function onSubmit(values) {
         const todo = {
             description: values.description,
-            targetDate: values.targetDate,
-            done: false
+            targetDate: values.targetDate
         }
         if (id !== "-1") {
             updateTodoApi(username, id, todo)
