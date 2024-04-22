@@ -1,10 +1,11 @@
-import axios from "axios";
+import { apiClient } from "./ApiClient";
 
-const apiClient = axios.create(
-    {
-        baseURL: 'http://localhost:8081/api/v1'
+
+export const baiscAuthApi = (token) => apiClient.get("/users/basic-auth", {
+    headers: {
+        Authorization: token
     }
-);
+});
 
 export const retrieveTodosForUsernameApi = (username) => apiClient.get(`/users/${username}/todos`);
 

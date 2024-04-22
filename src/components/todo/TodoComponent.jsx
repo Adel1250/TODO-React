@@ -51,7 +51,6 @@ export default function TodoComponent() {
     }
 
     function validate(values) {
-        console.log(values);
         let errors = {
         };
         if (values.description.length === 0) {
